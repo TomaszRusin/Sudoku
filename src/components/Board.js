@@ -11,10 +11,10 @@ class Board extends React.Component {
     }
 
     render() {
-        console.log(this.state.sudoku)
+        // console.log(this.state.sudoku)
         return (
             <div className="board">
-                {this.state.sudoku.map((i) => <Tile value={i} editable={i != '.' ? false : true}/>)}
+                {this.state.sudoku.map((item, index) => <Tile key={index} value={item} editable={item != '.' ? false : true}/>)}
             </div>
         )
     }

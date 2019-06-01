@@ -4,7 +4,6 @@ import React from 'react';
 class Tile extends React.Component {
     constructor(props) {
         console.log(props)
-        // console.log(state)
         super(props);
         this.state = {
             value: this.props.value,
@@ -37,7 +36,7 @@ class Tile extends React.Component {
         }
     
         return (
-            <div className="tile">
+            <div className="tile" key={this.props.key}>
                 {input}
             </div>
             
