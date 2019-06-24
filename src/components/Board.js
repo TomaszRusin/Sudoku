@@ -2,19 +2,25 @@
 import React from 'react';
 import Tile from './Tile';
 
+
+
 class Board extends React.Component {
+    
     constructor(props) {
+        // console.log(props.board.initialBoard)
         super(props);
         this.state = {
-            sudoku : this.props.sudokuString.split('')
+            initialBoard: props.board.initialBoard,
         }
+          
     }
 
-    render() {
-        // console.log(this.state.sudoku)
+    
+
+    render() {  
         return (
             <div className="board">
-                {this.state.sudoku.map((item, index) => <Tile key={index} value={item} editable={item != '.' ? false : true}/>)}
+                {this.state.initialBoard.map((item, index) => <Tile key={index} value={item} editable={item != '.' ? false : true}/>)}
             </div>
         )
     }
