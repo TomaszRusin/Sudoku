@@ -7,10 +7,9 @@ import Tile from './Tile';
 class Board extends React.Component {
     
     constructor(props) {
-        // console.log(props.board.initialBoard)
+        // console.log(props)
         super(props);
         this.state = {
-            initialBoard: props.board.initialBoard,
         }
           
     }
@@ -20,7 +19,7 @@ class Board extends React.Component {
     render() {  
         return (
             <div className="board">
-                {this.state.initialBoard.map((item, index) => <Tile key={index} value={item} editable={item != '.' ? false : true}/>)}
+                {this.props.board.board.map((item, index) => <Tile key={index} value={item} editable={item != '' ? false : true}/>)}
             </div>
         )
     }

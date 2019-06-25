@@ -11,7 +11,7 @@ class App extends React.Component {
         let sudokuRaw = sudoku.generate('easy').split('')
         const sudokuArr = sudokuRaw.map(digit  => {
             if(digit == '.'){
-                return ' '
+                return ''
             }else {
                 return digit
             }
@@ -28,10 +28,10 @@ class App extends React.Component {
     }
 
     generateNewBoard() {
-        let sudokuRaw = sudoku.generate('easy').split('')
+        let sudokuRaw = sudoku.generate(this.state.difficulty).split('')
         const sudokuArr = sudokuRaw.map(digit  => {
             if(digit == '.'){
-                return ' '
+                return ''
             }else {
                 return digit
             }
