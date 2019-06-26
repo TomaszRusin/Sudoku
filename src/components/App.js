@@ -41,14 +41,20 @@ class App extends React.Component {
             initialBoard: sudokuArr,
             board: sudokuArr
         })
-        
+    }
+
+    boardUpdate(tileId, newValue) {
+        console.log(`${tileId}, ${newValue}`)
+        this.setState({
+            board: Object.assign([], this.state.board, {[tileId]: newValue})
+        })
     }
     
     render() {
         return (
             <div className="app">
                 <h1>Sudoku</h1>
-                <Board board={this.state} />
+                <Board board={this.state} boardUpdate={this.boardUpdate.bind(this)} />
                 <div className="buttons">
                     <button>Check</button>
                     <button onClick={this.generateNewBoard.bind(this)}>New Game</button>

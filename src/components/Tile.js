@@ -8,18 +8,9 @@ class Tile extends React.Component {
         this.state = {
             value: ''
         };
-
-        this.handleChange = this.handleChange.bind(this);
     }
 
-    handleChange(event) {
-        if (event.target.value.length > 1) {
-            event.target.value = event.target.value.slice(0,1); 
-        }
-        
-        this.setState({value: event.target.value});
-    }
-
+    
     
     
 
@@ -27,16 +18,17 @@ class Tile extends React.Component {
         const editable = this.props.editable;
 
         const tileStyle = {
-            backgroundColor: editable ? 'white' : '#f7d171'
+            backgroundColor: editable ? 'white' : '#f7d171',
           };
         return (
             <div className="tile">
                 <input 
+                    id={this.props.id}
                     type="number" 
                     min="1" 
                     max="9" 
                     value={this.props.value}
-                    onChange={editable ? this.handleChange : () => {}}
+                    onChange={editable ? this.props.handler : () => {}}
                     style={tileStyle}
                 />
             </div>
