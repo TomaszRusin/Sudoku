@@ -7,7 +7,7 @@ import Tile from './Tile';
 class Board extends React.Component {
     
     constructor(props) {
-        console.log(props)
+        // console.log(props)
         super(props);
         this.state = {
         }
@@ -24,7 +24,7 @@ class Board extends React.Component {
         // this.setState({value: event.target.value});
     }
 
-    render() {  //TODO zrobić użytek z initialBoard i na jego podstawie zrobić tak żeby value (\d+|'') w nim definiowało czy kratke da się edytować
+    render() {
         return (
             <div className="board">
                 {this.props.board.board.map((item, index) =>
@@ -32,7 +32,7 @@ class Board extends React.Component {
                             key={index} 
                             id={index} 
                             value={item} 
-                            editable={item != '' ? false : true}
+                            editable={this.props.board.initialBoard[index] != '' ? false : true}
                             handler={this.handleTileChange.bind(this)}
                         />
                      )}
