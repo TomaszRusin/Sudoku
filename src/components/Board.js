@@ -7,11 +7,9 @@ import Tile from './Tile';
 class Board extends React.Component {
     
     constructor(props) {
-        // console.log(props)
         super(props);
-        this.state = {
-        }
-          
+        // this.state = {
+        // }     
     }
 
     handleTileChange(event) {
@@ -19,9 +17,7 @@ class Board extends React.Component {
         if (event.target.value.length > 1) {
             event.target.value = event.target.value.slice(0,1); 
         }
-        this.props.boardUpdate(event.target.id, event.nativeEvent.data)
-        
-        // this.setState({value: event.target.value});
+        this.props.boardUpdate(event.target.id, event.nativeEvent.data ? event.nativeEvent.data : '.')
     }
 
     render() {
@@ -32,7 +28,7 @@ class Board extends React.Component {
                             key={index} 
                             id={index} 
                             value={item} 
-                            editable={this.props.board.initialBoard[index] != '' ? false : true}
+                            editable={this.props.board.initialBoard[index] != '.' ? false : true}
                             handler={this.handleTileChange.bind(this)}
                         />
                      )}

@@ -8,14 +8,7 @@ const sudoku = require('sudoku-umd');
 class App extends React.Component {
     constructor(props) {
         super(props)
-        let sudokuRaw = sudoku.generate('easy').split('')
-        const sudokuArr = sudokuRaw.map(digit  => {
-            if(digit == '.'){
-                return ''
-            }else {
-                return digit
-            }
-        })
+        let sudokuArr = sudoku.generate('easy').split('')
         this.state = {
              difficulty: 'easy',
              initialBoard: sudokuArr,
@@ -28,15 +21,7 @@ class App extends React.Component {
     }
 
     generateNewBoard() {
-        let sudokuRaw = sudoku.generate(this.state.difficulty).split('')
-        const sudokuArr = sudokuRaw.map(digit  => {
-            if(digit == '.'){
-                return ''
-            }else {
-                return digit
-            }
-        })
-        
+        let sudokuArr = sudoku.generate(this.state.difficulty).split('')
         this.setState({
             initialBoard: sudokuArr,
             board: sudokuArr
@@ -49,8 +34,28 @@ class App extends React.Component {
         })
     }
 
+    solveBoard() {
+        const boardString = this.state.board.join('')
+        if(sudoku.solve(boardString) === false) {
+            alert('There is a mistake somewhere! It is now impossible to solve the puzzle.')
+        }else {
+            this.setState({
+                board: sudoku.solve(boardString).split('')
+            })
+        }
+    }
+
+    checkBoard() {
+        const boardString = this.state.board.join('')
+        if(sudoku.solve(boardString) === false) {
+            alert('There is a mistake somewhere! It is now impossible to solve the puzzle.')
+        }else {
+            alert('All good chief. Keep up the good work!')
+        }
+    }
+    
+
     boardUpdate(tileId, newValue) {
-        console.log(`${tileId}, ${newValue}`)
         this.setState({
             board: Object.assign([], this.state.board, {[tileId]: newValue})
         })
@@ -62,12 +67,11 @@ class App extends React.Component {
                 <h1>Sudoku</h1>
                 <Board board={this.state} boardUpdate={this.boardUpdate.bind(this)} />
                 <div className="buttons">
-                    <button>Check</button>
                     <button onClick={this.generateNewBoard.bind(this)}>New Game</button>
-                    <button onClick={() => {console.log(this.state)}}>Solve</button>
+                    <button onClick={this.checkBoard.bind(this)}>Check</button>
+                    <button onClick={this.solveBoard.bind(this)}>Solve</button>
                     <button onClick={this.restartBoard.bind(this)}>Restart</button>
                 </div>
-
                 <Difficulty newDifficulty={this.setDifficulty.bind(this)} />
             </div>
         )
