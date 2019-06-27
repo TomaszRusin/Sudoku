@@ -43,6 +43,12 @@ class App extends React.Component {
         })
     }
 
+    restartBoard() {
+        this.setState({
+            board: this.state.initialBoard
+        })
+    }
+
     boardUpdate(tileId, newValue) {
         console.log(`${tileId}, ${newValue}`)
         this.setState({
@@ -59,7 +65,7 @@ class App extends React.Component {
                     <button>Check</button>
                     <button onClick={this.generateNewBoard.bind(this)}>New Game</button>
                     <button onClick={() => {console.log(this.state)}}>Solve</button>
-                    <button>Restart</button>
+                    <button onClick={this.restartBoard.bind(this)}>Restart</button>
                 </div>
 
                 <Difficulty newDifficulty={this.setDifficulty.bind(this)} />
