@@ -2,17 +2,6 @@
 import React from 'react';
 
 class Tile extends React.Component {
-    constructor(props) {
-        // console.log(props)
-        super(props);
-        this.state = {
-            value: ''
-        };
-    }
-
-    
-    
-    
 
     render() {
         const editable = this.props.editable;

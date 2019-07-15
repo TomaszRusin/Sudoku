@@ -6,12 +6,6 @@ import Tile from './Tile';
 
 class Board extends React.Component {
     
-    constructor(props) {
-        super(props);
-        // this.state = {
-        // }     
-    }
-
     handleTileChange(event) {
         event.persist()
         if (event.target.value.length > 1) {
