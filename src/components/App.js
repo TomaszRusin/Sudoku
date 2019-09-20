@@ -65,14 +65,16 @@ class App extends React.Component {
         return (
             <div className="app">
                 <h1>Sudoku</h1>
-                <Board board={this.state} boardUpdate={this.boardUpdate.bind(this)} />
-                <div className="buttons">
-                    <button onClick={this.generateNewBoard.bind(this)}>New Game</button>
-                    <button onClick={this.checkBoard.bind(this)}>Check</button>
-                    <button onClick={this.solveBoard.bind(this)}>Solve</button>
-                    <button onClick={this.restartBoard.bind(this)}>Restart</button>
+                <div className="game">
+                    <Board board={this.state} boardUpdate={this.boardUpdate.bind(this)} />
+                    <div className="buttons">
+                        <button onClick={this.generateNewBoard.bind(this)}>New Game</button>
+                        <button onClick={this.checkBoard.bind(this)}>Check</button>
+                        <button onClick={this.solveBoard.bind(this)}>Solve</button>
+                        <button onClick={this.restartBoard.bind(this)}>Restart</button>
+                    </div>
+                    <Difficulty newDifficulty={this.setDifficulty.bind(this)} />
                 </div>
-                <Difficulty newDifficulty={this.setDifficulty.bind(this)} />
             </div>
         )
     }
